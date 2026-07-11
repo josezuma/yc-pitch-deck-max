@@ -1,0 +1,8 @@
+{
+  "name": "yc-pitch-deck-max",
+  "version": "1.0.0",
+  "description": "YC Pitch Deck MAX — super-skill for startup pitch decks",
+  "skills": ["create", "content", "design", "pptx", "html", "marp", "audit", "investor", "charts", "story"],
+  "platforms": ["claude", "cursor", "codex"],
+  "install": "claude /plugin install josezuma/yc-pitch-deck-max"
+}

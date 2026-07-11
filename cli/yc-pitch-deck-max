@@ -1,0 +1,55 @@
+#!/usr/bin/env python3
+"""YC Pitch Deck MAX — CLI dispatcher."""
+
+import sys, subprocess, os
+
+SCRIPTS_DIR = os.path.join(os.path.dirname(__file__), "..", "scripts")
+COMMANDS = {
+    "create":     ("create.py",     "create <name>             Full interview-to-deck pipeline"),
+    "interview":  ("interview.py",  "interview                 Run founder interview"),
+    "content":    ("content.py",    "content <slide>           Generate slide content"),
+    "story":      ("story.py",      "story                     Generate 3-vertebrae narrative"),
+    "script":     ("script.py",     "script                    Generate pitch script"),
+    "audit":      ("audit.py",      "audit <deck>              Audit deck against YC guidelines"),
+    "review":     ("review.py",     "review <slide-text>       Review single slide"),
+    "questions":  ("questions.py",  "questions                 Browse investor question bank"),
+    "market":     ("market.py",     "market <tam> <sam> <som> Market sizing slide"),
+    "traction":   ("traction.py",   "traction <data>           Traction chart from data"),
+    "style":      ("style.py",      "style <name>              Apply design style"),
+    "chart":      ("chart.py",      "chart <type>              Generate chart slide"),
+    "theme":      ("theme.py",      "theme <color>             Generate color theme"),
+    "preview":    ("preview.py",    "preview <file>            Start preview server"),
+    "bio":        ("bio.py",        "bio                       Generate team slide"),
+    "build":      ("build.py",      "build <fmt>               Build deck (pptx/html/marp)"),
+    "help":       (None,            "                          Show this help"),
+}
+
+def main():
+    if len(sys.argv) < 2 or sys.argv[1] in ("--help", "-h", "help"):
+        print("YC Pitch Deck MAX\n")
+        for cmd in sorted(COMMANDS):
+            info = COMMANDS[cmd]
+            print(f"  {info[1]}")
+        sys.exit(0)
+    
+    cmd = sys.argv[1]
+    args = sys.argv[2:]
+    
+    if cmd not in COMMANDS:
+        print(f"Unknown: {cmd}")
+        sys.exit(1)
+    
+    script_name = COMMANDS[cmd][0]
+    if not script_name:
+        return
+    
+    script_path = os.path.join(SCRIPTS_DIR, script_name)
+    if not os.path.exists(script_path):
+        print(f"Script not yet implemented: {script_name}")
+        sys.exit(1)
+    
+    subprocess.run([sys.executable, script_path] + args)
+    sys.exit(0)
+
+if __name__ == "__main__":
+    main()

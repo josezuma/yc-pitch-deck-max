@@ -1,0 +1,17 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test CLI
+        run: python3 cli/yc-pitch-deck-max create "TestCo" --json
+      - name: Test audit
+        run: python3 scripts/audit.py --json
