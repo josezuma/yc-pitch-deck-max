@@ -1,166 +1,95 @@
 <div align=center>
   <h1>🚀 YC Pitch Deck MAX</h1>
-  <p><em>The super-skill for startup pitch decks. Combines YC content frameworks, 30+ design styles, PPTX/HTML/Marp output, investor intelligence, and deck analysis — all in one CLI. From founder interview to investor-ready deck.</em></p>
-  <p><a href=LICENSE><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt=License></a>
-  <a href=https://github.com/josezuma/yc-pitch-deck-max/actions/workflows/ci.yml><img src="https://img.shields.io/badge/CI-passing-green.svg"></a>
-  <img src="https://img.shields.io/badge/styles-30-blue" alt="30 Styles">
-  <img src="https://img.shields.io/badge/slides-12_YC__standard-blue" alt="12 YC Standard Slides"></p>
+  <p><em>The super-skill for startup pitch decks. Combines YC content frameworks, 30+ design styles, PPTX/HTML/Marp output, investor intelligence, and deck analysis. Based on Kevin Hale + Geoff Ralston partner frameworks.</em></p>
+  <p><a href=LICENSE><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt=License></a></p>
   <p><strong>Author:</strong> <a href=https://github.com/josezuma>Jose Zuma</a></p>
 </div>
 
 ---
 
-## 🚀 One-Click Install
+## Quick Start
 
 ```bash
-# Via npm (recommended)
-npx yc-pitch-deck-max create "My Startup"
-
-# Via Claude Code (plugin)
-claude /plugin install josezuma/yc-pitch-deck-max
-
-# Via git
 git clone https://github.com/josezuma/yc-pitch-deck-max.git
-cd yc-pitch-deck-max && python3 cli/yc-pitch-deck-max create "My Startup"
+cd yc-pitch-deck-max
+
+# Create a complete pitch deck from a founder interview
+python3 scripts/create.py "BrandVirality" \
+  --problem "Businesses invisible in AI search" \
+  --solution "GEO audit platform" \
+  --traction "19 OSS repos, 85/100 avg" \
+  --ask "500K seed"
 ```
 
----
+## The 3 Vertebrae Framework
 
-## 🔥 What YC Pitch Deck MAX Can Do
+Based on Geoff Ralston's YC partner framework:
 
-### Content Generation (6 commands)
-| Command | What it does |
-|---------|-------------|
-| `yc-pitch-deck-max create <name>` | Full interview → complete deck pipeline |
-| `yc-pitch-deck-max interview` | Run the 10-question founder interview |
-| `yc-pitch-deck-max content <slide>` | Generate content for one slide (problem, solution, market, etc.) |
-| `yc-pitch-deck-max story` | Generate the 3-vertebrae narrative |
-| `yc-pitch-deck-max script` | Generate demo day pitch script from deck |
-| `yc-pitch-deck-max bio` | Generate team credentials slide |
+| # | Vertebra | Purpose | Investor Reaction |
+|---|----------|---------|------------------|
+| 1 | The Insight | Show you understand something others don't | "I see the pattern" |
+| 2 | The Solution | Show you're the right team to act on it | "They have the right approach" |
+| 3 | The Proof | Show traction that de-risks the bet | "This is real" |
 
-### Design & Output (5 commands)
-| Command | What it does |
-|---------|-------------|
-| `yc-pitch-deck-max build <format>` | Build deck as PPTX, HTML, or Marp markdown |
-| `yc-pitch-deck-max style <name>` | Apply a design style (Linear, Stripe, YC, Soft, Bold, etc.) |
-| `yc-pitch-deck-max chart <type>` | Generate a chart slide (revenue, market, competitive) |
-| `yc-pitch-deck-max theme` | Generate a color theme from brand color |
-| `yc-pitch-deck-max preview` | Start local preview server (HTML decks) |
-
-### Analysis (4 commands)
-| Command | What it does |
-|---------|-------------|
-| `yc-pitch-deck-max audit <deck>` | Audit a deck against YC partner guidelines |
-| `yc-pitch-deck-max review <slide-text>` | Review a single slide's content & design |
-| `yc-pitch-deck-max questions` | Browse the 200+ YC partner question bank |
-| `yc-pitch-deck-max compare <deck1> <deck2>` | Compare two decks |
-
-### Calculators (3 commands)
-| Command | What it does |
-|---------|-------------|
-| `yc-pitch-deck-max market <tam> <sam> <som>` | Generate market sizing slide |
-| `yc-pitch-deck-max traction <data>` | Generate traction chart from data |
-| `yc-pitch-deck-max cap-table <data>` | Generate cap table / use of funds slide |
-
----
-
-## 📚 Sub-Skills (Claude Code / Cursor / Codex)
-
-| Skill | What it masters |
-|-------|----------------|
-| `yc-pitch-deck-max/create` | Full pitch deck creation pipeline |
-| `yc-pitch-deck-max/content` | Slide-by-slide content guidance per YC framework |
-| `yc-pitch-deck-max/design` | Design system, style application, layout rules |
-| `yc-pitch-deck-max/pptx` | PPTX generation with PptxGenJS |
-| `yc-pitch-deck-max/html` | HTML slide deck generation (React + Vite) |
-| `yc-pitch-deck-max/marp` | Marp markdown slide generation |
-| `yc-pitch-deck-max/audit` | Deck audit against Kevin Hale + Geoff Ralston frameworks |
-| `yc-pitch-deck-max/investor` | Investor intelligence (question bank, customization) |
-| `yc-pitch-deck-max/charts` | Chart and data visualization slides |
-| `yc-pitch-deck-max/story` | Narrative structure and storytelling |
-
----
-
-## 🧠 How It Works
-
-```
-                        ┌─────────────────┐
-                        │  Founder Interview│
-                        │  (10 questions)   │
-                        └────────┬─────────┘
-                                 │
-                        ┌────────▼─────────┐
-                        │  3 Vertebrae      │
-                        │  (core narrative) │
-                        └────────┬─────────┘
-                                 │
-              ┌──────────────────┼──────────────────┐
-              ▼                  ▼                  ▼
-     ┌────────────────┐ ┌────────────────┐ ┌────────────────┐
-     │  Content Layer  │ │  Design Layer   │ │  Code Layer     │
-     │  • Problem      │ │  • Style select │ │  • PptxGenJS    │
-     │  • Solution     │ │  • Color theme  │ │  • React+ Vite  │
-     │  • Market       │ │  • Typography   │ │  • Marp         │
-     │  • Traction     │ │  • Layout grid  │ │  • HTML preview │
-     │  • Team         │ │  • Icon system  │ │                 │
-     └────────────────┘ └────────────────┘ └────────────────┘
-              │                  │                  │
-              └──────────────────┼──────────────────┘
-                                 │
-                        ┌────────▼─────────┐
-                        │  Output Formats   │
-                        │  .pptx │ .html   │
-                        │  .md (Marp)      │
-                        └──────────────────┘
-```
-
----
-
-## 📊 Demo: Create a Pitch Deck
+## Demo Output
 
 ```bash
-$ yc-pitch-deck-max create "BrandVirality"
+$ python3 scripts/create.py BrandVirality
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-YC Pitch Deck MAX — Builder
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PITCH STORY — BrandVirality
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Running 10-question founder interview...
-✅ Interview complete (2 minutes)
+Vertebra #1: The Insight
+"Businesses are invisible in AI search.
+85% of LLM responses cite only top 3 brands.
+The $850M GEO market grew 527% in 2024."
 
-Identifying 3 vertebrae...
-✅ Narrative structure built
+Vertebra #2: The Solution
+"BrandVirality built the first comprehensive GEO platform.
+19 open-source tools, 85/100 audit score."
 
-Design style: YC-Classic (Klein Blue #002FA7)
-✅ Style applied
-
-Generating 12 slides...
-  ✅ 1. Title — BrandVirality
-  ✅ 2. Problem — Businesses invisible in AI search
-  ✅ 3. Solution — AI visibility SaaS platform
-  ✅ 4. Why Now — LLM adoption + $850M GEO market
-  ✅ 5. Market Size — $2.3B TAM
-  ✅ 6. Product — Dashboard, audit, monitor
-  ✅ 7. Traction — 19 OSS repos, 85/100 avg score
-  ✅ 8. Business Model — SaaS tiers
-  ✅ 9. Competition — Unique GEO focus
-  ✅ 10. Team — Jose Zuma, Expert in AI Visibility
-  ✅ 11. Financials — Capital-efficient
-  ✅ 12. Ask — $500K seed
-
-Output: pitch-deck-bv.pptx (PPTX)
-        pitch-deck-bv.html (HTML preview)
-        pitch-deck-bv.md (Marp slides)
-
-To preview: yc-pitch-deck-max preview pitch-deck-bv.html
+Vertebra #3: The Proof
+"Founded by an AI visibility expert.
+Capital-efficient, product-led growth.
+Seeking $500K to reach 1000 paid accounts."
 ```
 
----
+## Sub-Skills
 
-## 👨‍💻 Author
+| Skill | Description |
+|-------|-------------|
+| create | Full interview-to-deck pipeline |
+| content | 12 YC standard slide formulas |
+| design | 30+ styles (YC-Classic, Linear, Stripe, Dark) |
+| pptx | PptxGenJS code generation |
+| html | React slide deck output |
+| marp | Marp markdown themes |
+| audit | Deck analyzer against YC guidelines |
+| investor | 200+ YC partner questions |
+| charts | Growth/traction chart templates |
+| story | Narrative structure builder |
 
-**Jose Zuma** — [GitHub](https://github.com/josezuma)
+## Install Paths
 
-## 📄 License
+```bash
+# Claude Code
+/plugin install yc-pitch-deck-max
 
-[MIT](LICENSE) © 2026 Jose Zuma
+# Direct
+git clone https://github.com/josezuma/yc-pitch-deck-max.git
+
+# NPM (coming soon)
+npx yc-pitch-deck-max create "My Startup"
+```
+
+## Related
+
+- [yc-content-framework](https://github.com/josezuma/yc-content-framework)
+- [slide-styles](https://github.com/josezuma/slide-styles)
+- [deck-analyzer](https://github.com/josezuma/deck-analyzer)
+- [investor-question-bank](https://github.com/josezuma/investor-question-bank)
+
+## License
+
+MIT © 2026 Jose Zuma
