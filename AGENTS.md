@@ -1,16 +1,8 @@
-# YC Pitch Deck MAX
+# yc-pitch-deck-max
+
+Super-skill for startup pitch decks. 12 slides, 30+ styles, PPTX/HTML/Marp output.
 
 ## For AI agents
-The super-skill for startup pitch decks. Combines YC content frameworks, 30+ design styles, PPTX/HTML/Marp output, investor intelligence, and deck analysis.
-
-### Key files
-- cli/yc-pitch-deck-max — main CLI entry point
-- scripts/ — core engine (create, audit, content, story, etc.)
-- .claude/skills/ — agent skills for each subdomain
-- templates/ — reusable slide and content templates
-
-### Sub-skills
-create, content, design, pptx, html, marp, audit, investor, charts, story
-
-### Author
-Jose Zuma
+- Run scripts/generate.py with --help for options
+- Use --json flag for machine-readable output
+- Sister repos: awesome-ai-visibility, ai-crawlers, geo-audit-skill, schema-for-ai, repo-visibility-skill, llmstxt-gen, marketing-skills, geo-prompts, geo-watch, mcp-geo
